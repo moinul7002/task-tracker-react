@@ -2,8 +2,6 @@ import IndividualTask from "../IndividualTask";
 
 const Tasks = ({ tasks, onDelete, onToggle }) => {
   return (
-    // Spread across & add a new object via setTasks
-    // setTasks([...tasks, {}])
     <>
       {tasks.map((task) => (
         <IndividualTask
