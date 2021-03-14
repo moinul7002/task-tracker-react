@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./Components/Header";
 import Tasks from "./Components/Tasks";
@@ -7,33 +7,27 @@ import AddTask from "./Components/AddTask";
 function App() {
   const [toggleAddTaskDisplay, setToggleAddTaskDisplay] = useState(false);
 
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: "Office Interview",
-      date: "Mar 09",
-      time: "5:45pm",
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: "Football Match",
-      date: "Mar 10",
-      time: "1:30pm",
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: "Movies at Cineplex",
-      date: "Mar 11",
-      time: "5:30pm",
-      reminder: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  //Fetch Tasks
+  const fetchTasks = async () => {
+    const response = await fetch("http://localhost:5000/tasks");
+    const data = await response.json();
+
+    return data;
+  };
+
+  //Get Tasks
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    };
+    getTasks();
+  }, []);
 
   //Save Task
   const saveTask = (task) => {
-    // console.log(task);
     const id = Math.floor(Math.random() * 10000) + 1;
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
@@ -56,15 +50,18 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
+      <Header
+        onAdd={() => setToggleAddTaskDisplay(!toggleAddTaskDisplay)}
+        displayAdd={toggleAddTaskDisplay}
+      />
+
+      {toggleAddTaskDisplay && <AddTask onAdd={saveTask} />}
 
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={delTask} onToggle={toggleReminder} />
       ) : (
         "No Task To Do"
       )}
-
-      <AddTask onAdd={saveTask} />
     </div>
   );
 }

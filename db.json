@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Office Interview",
+      "date": "Mar 09",
+      "time": "05:45pm",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "text": "Football Match",
+      "date": "Mar 10",
+      "time": "01:30pm",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "text": "Movies at Cineplex",
+      "date": "Mar 11",
+      "time": "05:30pm",
+      "reminder": false
+    }
+  ]
+}
