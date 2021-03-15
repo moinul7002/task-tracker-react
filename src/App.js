@@ -6,12 +6,19 @@ import AddTask from "./Components/AddTask";
 
 function App() {
   const [toggleAddTaskDisplay, setToggleAddTaskDisplay] = useState(false);
-
   const [tasks, setTasks] = useState([]);
 
-  //Fetch Tasks
+  //Fetch All Task
   const fetchTasks = async () => {
     const response = await fetch("http://localhost:5000/tasks");
+    const data = await response.json();
+
+    return data;
+  };
+
+  //Fetch A Task
+  const fetchTask = async (id) => {
+    const response = await fetch(`http://localhost:5000/tasks/${id}`);
     const data = await response.json();
 
     return data;
@@ -26,24 +33,55 @@ function App() {
     getTasks();
   }, []);
 
-  //Save Task
-  const saveTask = (task) => {
-    const id = Math.floor(Math.random() * 10000) + 1;
-    const newTask = { id, ...task };
-    setTasks([...tasks, newTask]);
+  // //Save Task
+  // const saveTask = (task) => {
+  //   const id = Math.floor(Math.random() * 10000) + 1;
+  //   const newTask = { id, ...task };
+  //   setTasks([...tasks, newTask]);
+  // };
+
+  //Add Task
+  const addTask = async (task) => {
+    const response = await fetch("http://localhost:5000/tasks", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(task),
+    });
+
+    const data = await response.json();
+    setTasks([...tasks, data]);
   };
 
   //Delete tasks
-  const delTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+  const delTask = async (id) => {
+    const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "DELETE",
+    });
+    response.status == 200
+      ? setTasks(tasks.filter((task) => task.id !== id))
+      : alert("Error Deleting The Task");
   };
 
   // Toggle Reminder
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchTask(id);
+    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
+
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(updTask),
+    });
+
+    const data = await res.json();
+
     setTasks(
       tasks.map((task) =>
-        // Spread across & add a new object via setTasks --> setTasks([...tasks, {}])
-        task.id === id ? { ...task, reminder: !task.reminder } : task
+        task.id === id ? { ...task, reminder: data.reminder } : task
       )
     );
   };
@@ -55,7 +93,7 @@ function App() {
         displayAdd={toggleAddTaskDisplay}
       />
 
-      {toggleAddTaskDisplay && <AddTask onAdd={saveTask} />}
+      {toggleAddTaskDisplay && <AddTask onAdd={addTask} />}
 
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={delTask} onToggle={toggleReminder} />

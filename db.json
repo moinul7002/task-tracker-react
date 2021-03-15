@@ -1,25 +1,35 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "Office Interview",
-      "date": "Mar 09",
-      "time": "05:45pm",
-      "reminder": true
+      "text": "BSCS AP Exam",
+      "date": "Mar 18",
+      "time": "03:00 PM",
+      "reminder": true,
+      "id": 1
     },
     {
-      "id": 2,
-      "text": "Football Match",
-      "date": "Mar 10",
-      "time": "01:30pm",
-      "reminder": true
-    },
+      "text": "Office ",
+      "date": "Mar 16",
+      "time": "09:00 AM",
+      "reminder": true,
+      "id": 2
+    }
+  ],
+
+  "login": [
     {
-      "id": 3,
-      "text": "Movies at Cineplex",
-      "date": "Mar 11",
-      "time": "05:30pm",
-      "reminder": false
+      "code": 0,
+      "message": "ok",
+      "data": {
+        "token": "asdfajsldfjasljdflaksjfj",
+        "emp_id": "56",
+        "emp_name": "Anika",
+        "img": "image1.jpg",
+        "status": "1",
+        "in_time": "09:00",
+        "email": "anifaiza@gmail.com",
+        "emp_designation": "Junior Software Engineer"
+      }
     }
   ]
 }

@@ -1,0 +1,148 @@
+{
+  "login": {
+    "code": 0,
+    "message": "ok",
+    "data": {
+      "token": "asdfajsldfjasljdflaksjfj",
+      "emp_id": "56",
+      "emp_name": "Anika",
+      "img": "image1.jpg",
+      "status": "1",
+      "in_time": "09:00",
+      "email": "anifaiza@gmail.com",
+      "emp_designation": "Junior Software Engineer"
+    }
+  },
+
+  "out-time": {
+    "code": 0,
+    "message": "ok",
+    "data": {
+      "emp_id": "56",
+      "out_time": "18:00"
+    }
+  },
+
+  "get-info": {
+    "code": 0,
+    "message": "ok",
+    "data": {
+      "name": "Anika",
+      "image": "image1.jpg",
+      "emp_id": "56",
+      "email": "anifaiza@gmail.com",
+      "date_of_birth": "21/03/1995",
+      "address": "160 Hatirjheel Road, Dhaka",
+      "joining_date": "15/02/2021",
+      "contact_number": "01751112220",
+      "emp_status": "Active",
+      "emp_designation": "Junior Software Engineer"
+    }
+  },
+
+  "update": {
+    "code": 0,
+    "message": "ok",
+    "data": {
+      "name": "Anika",
+      "image": "image1.jpg",
+      "address": "160 Hatirjheel Road, Dhaka",
+      "contact_number": "01751112220"
+    }
+  },
+
+  "current-month-summary": {
+    "code": 0,
+    "message": "ok",
+    "data": {
+      "total_working_days": "22",
+      "monthly_working_days": "20",
+      "total_late": "3",
+      "total_leave": "2",
+      "overtime": "5"
+    }
+  },
+
+  "history": {
+    "code": 0,
+    "message": "ok",
+    "data": [
+      {
+        "2021": {
+          "February": {
+            "total_working_days": "22",
+            "monthly_working_days": "20",
+            "total_late": "3",
+            "total_leave": "2",
+            "overtime": "5"
+          }
+        }
+      },
+      {
+        "2021": {
+          "January": {
+            "total_working_days": "21",
+            "monthly_working_days": "20",
+            "total_late": "3",
+            "total_leave": "1",
+            "overtime": "10"
+          }
+        }
+      },
+      {
+        "2020": {
+          "December": {
+            "total_working_days": "22",
+            "monthly_working_days": "20",
+            "total_late": "3",
+            "total_leave": "2",
+            "overtime": "5"
+          }
+        }
+      }
+    ]
+  },
+
+  "monthly-log": {
+    "code": 0,
+    "message": "ok",
+    "data": [
+      {
+        "date": "28/02/2021",
+        "in_time": "09:00",
+        "out_time": "18:00",
+        "status": "1"
+      },
+      {
+        "date": "27/02/2021",
+        "in_time": "09:00",
+        "out_time": "18:00",
+        "status": "1"
+      },
+      {
+        "date": "26/02/2021",
+        "in_time": "09:00",
+        "out_time": "18:00",
+        "status": "1"
+      },
+      {
+        "date": "25/02/2021",
+        "in_time": "09:00",
+        "out_time": "18:00",
+        "status": "1"
+      },
+      {
+        "date": "24/02/2021",
+        "in_time": "09:00",
+        "out_time": "18:00",
+        "status": "1"
+      },
+      {
+        "date": "23/02/2021",
+        "in_time": "09:00",
+        "out_time": "18:00",
+        "status": "1"
+      }
+    ]
+  }
+}
